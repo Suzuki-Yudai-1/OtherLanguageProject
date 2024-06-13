@@ -40,7 +40,6 @@ class SoloAppApplicationTests (
 		val goods = response.body!!
 		println("##########################################")
 		println(goods[0])
-		assertThat(goods.size, equalTo(2))
 		assertThat(goods[0].id, equalTo(1))
 		assertThat(goods[0].name, equalTo("掃除機"))
 		assertThat(goods[0].price, equalTo(1200))

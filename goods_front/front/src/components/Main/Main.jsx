@@ -39,12 +39,13 @@ export const Main = () => {
         {allGoods.map((obj, index) => (
           <div className="goods" key={index}>
             {urls[index] && (
+              <div className="imagediv">
               <img className="image" src={urls[index]} alt={`Image ${index}`} />
+              <p>￥{obj.price}　</p>
+              </div>
             )}
-            {obj.name}
-            <br />
-            {`￥${obj.price}`}
-            <Link to={"item"} state={{obj: obj,url: urls[index]}}>詳細</Link>
+           {obj.name}<br/>
+            <Link to={"item"} state={{obj: obj,url: urls[index]}}>商品ページ</Link>
           </div>
         ))}
       </div>

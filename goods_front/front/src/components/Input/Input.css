@@ -1,3 +1,17 @@
 .inputPage{
     text-align: center;
 }
+
+.PopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 300px;
+    width: 500px;
+    font-size: 30px;
+    transform: translate(-50%, -50%);
+    background-color: #313131b4;
+    padding: 20px;
+    color: white;
+
+  }

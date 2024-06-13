@@ -14,11 +14,13 @@ function App() {
     <Router>
       <>
         <div className="header">
+          <span className="logo">digcari</span>
           <TextField
             className="search"
             placeholder="検索"
             variant="outlined"
-            sx={{ width: "500px" , verticalAlign: "0"}}
+            size="small"
+            sx={{ width: "500px" , verticalAlign: "0", background: "#74747425"}}
           >
           </TextField>
           <IconButton type="button" >
@@ -29,7 +31,7 @@ function App() {
             variant="contained"
             component={Link}
             to="/"
-            sx={{ marginLeft: "650px", marginRight: "10pX" }}
+            sx={{ marginLeft: "500px", marginRight: "10pX" }}
           >
             ホーム
           </Button>

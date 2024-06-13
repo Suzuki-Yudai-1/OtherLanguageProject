@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Delete.css";
 import {
@@ -27,7 +27,12 @@ export const Delete = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    }).then(()=> {
+      (async () => {
+        const goodsList = await axios("/api/goods").then((res) => res.data);
+        setAllGoods(goodsList);
+      })();
+    })
   };
 
   return (

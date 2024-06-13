@@ -1,9 +1,10 @@
 import React from "react";
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef, Link } from "react";
 import "./Input.css";
 import { Button, MenuItem, Select, TextField } from "@mui/material";
 import storage from "../../firebase";
 import { ref, uploadBytes } from "firebase/storage";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 export const Input = () => {
   const inputRef = useRef(null);
@@ -11,11 +12,13 @@ export const Input = () => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [condition, setCondition] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState("画像が選択されていません");
   const [file, setFile] = useState({});
+  const [isPopUpVisible, setPopUpVisible] = useState(false);
 
-  console.log(file);
-  console.log(image);
+  const togglePopUp = () => {
+    setPopUpVisible(!isPopUpVisible);
+  };
 
   const fileUpload = () => {
     inputRef.current.click();
@@ -48,8 +51,14 @@ export const Input = () => {
     <>
       <div className="inputPage">
         <h1>商品の出品</h1>
-        <Button variant="contained" sx={{width: "300px", height: "55px"}} onClick={fileUpload}>
-          画像を選択
+
+        <p>{image}</p>
+        <Button
+          variant="contained"
+          sx={{ width: "300px", height: "55px" }}
+          onClick={fileUpload}
+        >
+          画像をアップロード　<CloudUploadIcon/>
         </Button>
         <div className="imageUplodeBox">
           <input
@@ -69,7 +78,7 @@ export const Input = () => {
           label="商品名"
           type="text"
           margin="normal"
-          sx={{width: "500px"}}
+          sx={{ width: "500px" }}
           onChange={(e) => setName(e.target.value)}
         ></TextField>
         <br />
@@ -77,14 +86,14 @@ export const Input = () => {
           label="販売価格"
           type="number"
           margin="normal"
-          sx={{width: "500px"}}
+          sx={{ width: "500px" }}
           onChange={(e) => setPrice(e.target.value)}
         ></TextField>
         <h2>商品の詳細</h2>
         <Select
           label="商品の状態"
           defaultValue={"新品、未使用"}
-          sx={{width: "500px", margin:"10px"}}
+          sx={{ width: "500px", margin: "10px" }}
           onChange={(e) => setCondition(e.target.value)}
         >
           <MenuItem value={"新品、未使用"}>新品、未使用</MenuItem>
@@ -103,19 +112,30 @@ export const Input = () => {
           margin="normal"
           multiline
           rows={5}
-          sx={{width: "500px", hight: "1000px"}}
+          sx={{ width: "500px", hight: "1000px" }}
           onChange={(e) => setDescription(e.target.value)}
         ></TextField>
         <br />
         <Button
           variant="contained"
-          sx={{width: "300px", height: "55px", margin: "30px"}}
+          sx={{ width: "300px", height: "55px", margin: "30px" }}
           onClick={() => {
-            postButton(),onFileUpload()
+            postButton(), onFileUpload(), togglePopUp();
           }}
         >
           出品する
         </Button>
+
+        {isPopUpVisible && (
+        <div className="PopUp">
+          <p>出品が完了しました</p>
+          <Button
+            onClick={togglePopUp}
+            variant="contained"
+          >
+            閉じる
+          </Button>
+        </div>  )}
       </div>
     </>
   );

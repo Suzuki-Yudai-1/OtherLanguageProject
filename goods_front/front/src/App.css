@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
+
+
 .header {
     border-bottom: solid 2px;
     border-color: rgb(169, 168, 168);
     height: 100px;
     line-height: 100px;
+}
 
+.logo{
+    margin: 30px;
+    font-size: 27px;
+    font-family: "Comfortaa", sans-serif;
 }
