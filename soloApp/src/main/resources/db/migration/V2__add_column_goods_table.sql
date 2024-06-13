@@ -1,0 +1,1 @@
+ALTER TABLE goods ADD image TEXT
