@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
+@RequestMapping
 class SoloController (@Autowired val soloRepository: SoloRepository) {
 
+    @CrossOrigin
     @GetMapping("/api/goods")
     fun getGoods(): Array<Goods> {
         return soloRepository.fetchGoods()

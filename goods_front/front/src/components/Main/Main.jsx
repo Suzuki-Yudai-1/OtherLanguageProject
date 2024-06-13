@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Main.css";
 import storage from "../../firebase";
 import { ref, getDownloadURL } from "firebase/storage";
-
+import { useNavigate, Link} from "react-router-dom";
 
 export const Main = () => {
   const [allGoods, setAllGoods] = useState([]);
@@ -38,10 +38,13 @@ export const Main = () => {
       <div className="goodsPage">
         {allGoods.map((obj, index) => (
           <div className="goods" key={index}>
-            {urls[index] && <img className="image" src={urls[index]} alt={`Image ${index}`} />}
+            {urls[index] && (
+              <img className="image" src={urls[index]} alt={`Image ${index}`} />
+            )}
             {obj.name}
             <br />
-            {`${obj.price}円`}
+            {`￥${obj.price}`}
+            <Link to={"item"} state={{obj: obj,url: urls[index]}}>詳細</Link>
           </div>
         ))}
       </div>

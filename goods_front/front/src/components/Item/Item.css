@@ -1,0 +1,14 @@
+.itemImage{
+    margin: 60px;
+    width: 800px;
+}
+.details {
+    border-left: solid 2px;
+    border-color: rgb(169, 168, 168);
+    width: 700px;
+    height: 800px;
+  
+}
+.item {
+    display: flex;
+}

@@ -101,7 +101,9 @@ export const Input = () => {
           label="商品の説明"
           type="textarea"
           margin="normal"
-          sx={{width: "500px"}}
+          multiline
+          rows={5}
+          sx={{width: "500px", hight: "1000px"}}
           onChange={(e) => setDescription(e.target.value)}
         ></TextField>
         <br />
